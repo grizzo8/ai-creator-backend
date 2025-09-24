@@ -1,0 +1,17 @@
+<section>
+  <h2>📤 GitHub Controls</h2>
+  <button onclick="pushToGitHub()">Push to GitHub</button>
+  <div id="push-output" style="margin-top: 10px; font-weight: bold;"></div>
+</section>
+function pushToGitHub() {
+  fetch('https://yourai.site.app/push-to-github', {
+    method: 'POST'
+  })
+  .then(res => res.text())
+  .then(msg => {
+    document.getElementById('push-output').textContent = msg;
+  })
+  .catch(err => {
+    document.getElementById('push-output').textContent = "Error: " + err.message;
+  });
+}
